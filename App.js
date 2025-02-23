@@ -109,11 +109,17 @@ export default function App() {
           const mulheresNum = parseInt(mulheres) || 0;
           const criancasNum = parseInt(criancas) || 0;
 
-          const totalChurrasco = ((homensNum * 400) + (mulheresNum * 400 + (400 * 0.25)) + (criancasNum * 200)) / 1000;
+          const totalChurrasco = ((homensNum * 400) + (mulheresNum * 400 - ((mulheresNum * 400) * 0.25)) + (criancasNum * 200)) / 1000;
           
           const totalCarvao = totalChurrasco / 6
 
-          alert(`A quantidade de carne necessária é ${totalChurrasco.toFixed(2)} Kg \n e ${totalCarvao} sacos de carvão serão necessários` );
+          alert(
+              `A quantidade de carne necessária é ${totalChurrasco.toFixed(2)} Kg \n 
+              ${totalCarvao.toFixed(0)} sacos de carvão serão necessários \n
+              Carne para Homens: ${(homensNum * 400) / 1000 } Kg\n
+              Carne para Mullheres: ${(mulheresNum * 400 - ((mulheresNum * 400) * 0.25)) / 1000} Kg
+              Carne para Crianças: ${(criancasNum * 200) / 1000} Kg`
+            );
         }}
       />
       <StatusBar style="auto" />
